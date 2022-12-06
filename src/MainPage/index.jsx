@@ -1,8 +1,8 @@
-import Layout from "../Components/Layout";
+import Layout from "../Components/Layout/index";
 
 const MainPage = () => {
     return (
-        <Layout>
+        <Layout nickName="Ilya" id={1}>
             <div>main page</div>
         </Layout>
         

@@ -1,12 +1,18 @@
+import UserBadge from '../UserBadge/index';
 import './style.css';
 
 
-const Navbar = () => {
+
+const Navbar = ({
+    nickName,
+    avatarUrl,
+    id,
+}) => {
     return(
         <div className='cnNavbarRoot'>
             <div className='cnNavbarWrapper'>
                 <span>Tristagarm</span>
-                <div>user</div>
+                <UserBadge nickName={nickName} avatarUrl={avatarUrl} id={id}/>
             </div> 
         </div>
     );
