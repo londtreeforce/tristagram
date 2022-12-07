@@ -57,3 +57,9 @@
     cursor: pointer;
     
 }
+
+.cnDetailedCardTitle {
+    font-size: 14px;
+    color: #8e8d8d;
+    cursor: pointer;
+}
