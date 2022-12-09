@@ -1,12 +1,12 @@
 import './style.css';
 
 const Comment = ({
-    nickName,
+    nickname,
     text
 }) => {
     return (
         <div className="cnCommentRoot">
-            <span className="cnCommentName">{nickName}:</span>
+            <span className="cnCommentName">{nickname}:</span>
             <span>{text}</span>
         </div>
     );

@@ -4,32 +4,58 @@ import Layout from "../Components/Layout/index";
 import DetailedCard from "../Components/DetailedCard";
 import { getPhotos } from "../redux/actions/photos";
 import InfiniteScroll from "react-infinite-scroll-component";
+import "./style.css";
 
 const MainPage = () => {
-    const state = useSelector (state => state);
-    const dispatch = useDispatch ();
+    const photos = useSelector(state => state.photos.photos);
+    const loading = useSelector(state => state.photos.isPhotosLoading);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getPhotos)
     }, [])
 
     useEffect(() => {
-        dispatch(getPhotos())
-    },[]);
+        dispatch(getPhotos());
+    }, []);
 
-    console.log(state, 'state');
+    
     return (
         <Layout nickName="Ilyas" id={1}>
-            <div>main page</div>
-            <DetailedCard
-                userName="Ilyas"
-                userId={1}
-                imgUrl="https://i.pinimg.com/236x/33/62/47/33624764ea12c26c2076d3954cf0ac7f.jpg"
-                likes={10}
-                isLikeByYou={true}
-                comments={[{ text: 'asd', nickName: 'zxcdw'}]}
-            />
-            </Layout>
+            <div className="cnMainPageRoot">
+                <InfiniteScroll 
+                dataLength={photos.length}
+                next={() => console.log('next')}
+                hasMore={true}
+                loader={'loading'}
+                endMessage={
+                    <p>Thats all </p>
+                }>
+
+                    {loading ? 'loading...' : photos.map(({ author, imgUrl, id, likes, comments, avatarUrl }) => (
+                        <DetailedCard
+                        key={id}
+                        userName={author.nickname}
+                        userId={author.id}
+                        avatarUrl={author.avatarUrl}
+                        imgUrl={imgUrl}
+                        likes={likes.length}
+                        isLikeByYou={true}
+                        comments={comments}
+                        className="cnMainPageCard"
+                    />
+                    ))}
+                </InfiniteScroll>
+            </div>
+
+
+
+
+
+
+
+
+        </Layout>
     );
 };
 

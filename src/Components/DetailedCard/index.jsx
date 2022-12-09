@@ -2,17 +2,19 @@ import { useState } from 'react';
 import UserBadge from '../UserBadge';
 import './style.css';
 import Comment from '../Comment';
+import cn from 'classnames';
 
 
 const DetailedCard = (
     {
-        userName,
+        nickName,
         avatarUrl,
         id,
         imgUrl,
         likes,
         isLike,
-        comments
+        comments,
+        className,
     }
 ) => {
 
@@ -34,9 +36,9 @@ const DetailedCard = (
         return comments.map((comment) => <Comment {...comment} />)
     };
     return (
-        <div className="cnDetailedCardRoot">
+        <div className={cn("cnDetailedCardRoot", className)}>
             <div className="cnDetailedCardHeader">
-                <UserBadge nickName={userName} avatarUrl={avatarUrl} id={id} />{/*Сюда не вписывать, по логике понятно что с UserBadge */}
+                <UserBadge nickName={nickName} avatarUrl={avatarUrl} id={id} />{/*Сюда не вписывать, по логике понятно что с UserBadge */}
             </div>
             <div>
                 <img src={imgUrl} alt="img" className="cnDetailedCardImg" />
