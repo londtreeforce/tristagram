@@ -3,8 +3,8 @@ import './style.css';
 const Comment = ({
     nickName,
     text
-}) =>{
-    return(
+}) => {
+    return (
         <div className="cnCommentRoot">
             <span className="cnCommentName">{nickName}:</span>
             <span>{text}</span>
